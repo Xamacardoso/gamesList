@@ -1,6 +1,7 @@
 package com.example.gamesList.dto;
 
 import com.example.gamesList.entities.Game;
+import com.example.gamesList.projections.GameMinProjection;
 
 // Minimalist game DTO
 public class GameMinDTO {
@@ -11,6 +12,16 @@ public class GameMinDTO {
     private String shortDescription;
 
     public GameMinDTO() {}
+
+    // Constructor using projection
+    public GameMinDTO(GameMinProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
+    }
+
     public GameMinDTO(Game entity){
         id = entity.getId();
         title = entity.getTitle();

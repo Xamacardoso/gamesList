@@ -3,6 +3,7 @@ package com.example.gamesList.services;
 import com.example.gamesList.dto.GameDTO;
 import com.example.gamesList.dto.GameMinDTO;
 import com.example.gamesList.entities.Game;
+import com.example.gamesList.projections.GameMinProjection;
 import com.example.gamesList.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,13 @@ public class GameService {
     public GameDTO findById(Long id) {
         Game result  = gameRepository.findById(id).get();
         return new GameDTO(result);
+    }
+
+    // Returns games by list
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        // Builtin JPA method for finding all table elements
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(GameMinDTO::new).toList();
     }
 }
