@@ -2,6 +2,7 @@ package com.example.gamesList.dto;
 
 import com.example.gamesList.entities.Game;
 
+// Minimalist game DTO
 public class GameMinDTO {
     private Long id;
     private String title;
