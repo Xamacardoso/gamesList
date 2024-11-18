@@ -5,7 +5,7 @@ public interface GameMinProjection {
     // Get methods for every selected argument on SQL query
     Long getId();
     String getTitle();
-    Integer getYear();
+    Integer getGameYear();
     String getImgUrl();
     String getShortDescription();
     Integer getPosition();
